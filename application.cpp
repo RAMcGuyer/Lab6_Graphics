@@ -96,10 +96,17 @@ GLuint loadTarga(const char* filename)
     
     // TODO: THIS IS THE PART YOU SHOULD CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Ha!!!!!!!!!
     //glGenTextures
+    glGenTextures(1, &texture_id);
     //glBindTexture
+    glBindTexture(GL_TEXTURE_2D, texture_id);
     //glTexParameteri
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //Set mag filter to linear
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //set min filter to linear
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_LINEAR); // set wrap coordinate s to repeat
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_LINEAR); //set wrap coordinate t to repeat
+    
     //glTexImage2D
-
+    glTexImage2D(GL_TEXTURE_2D,0,  GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data); 
     return texture_id;
 }
 
